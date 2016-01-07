@@ -29,6 +29,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/pokemon', {
+        templateUrl: 'views/pokemon.html',
+        controller: 'PokemonCtrl',
+        controllerAs: 'pokemon'
+      })
+      .when('/typography', {
+        templateUrl: 'views/typography.html',
+        controller: 'TypographyCtrl',
+        controllerAs: 'typography'
+      })
       .otherwise({
         redirectTo: '/'
       });

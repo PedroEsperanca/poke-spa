@@ -1,23 +1,21 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<div class="row">
+  <h1>POKÉDEX</h1>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <ul class="pokemon-list">
+    <li ng-repeat="pokemon in pokemons | orderBy:resource_uri | limitTo:quantity">
+      {{pokemon.resource_uri}}
+      <p>{{pokemon.name}}</p>
+    </li>
+  </ul>
+
+  <div class="row text-center">
+    <div class="col-sm-6">
+      <div class="button-1" ng-click="getMore()">LOAD MORE</div>
+    </div>
+  </div>
+
+  <pre>{{pokemons |json}}</pre>
+
 </div>
