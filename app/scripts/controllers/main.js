@@ -22,6 +22,14 @@ angular.module('pokedexApp')
 	}).then(function successCallback(response) {
 	    console.log(response);
 	    response.data.pokemon.forEach(function(pokemon){
+			//get id
+			pokemon.id = parseInt(
+				pokemon.resource_uri.substring(
+					15,
+					pokemon.resource_uri.length-1
+				)
+			);
+	    	
 	    	$scope.pokemons.push(pokemon)
 	    });
 	    console.log($scope.pokemons)
