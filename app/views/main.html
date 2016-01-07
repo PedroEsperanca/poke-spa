@@ -3,7 +3,11 @@
 <div class="row">
   <h1>POKÉDEX</h1>
 
-  <ul class="pokemon-list">
+  <ul 
+    class="pokemon-list" 
+    infinite-scroll="getMore()"
+    infinite-scroll-disabled="blockInfiniteScroll"
+  >
     <li 
       ng-repeat="pokemon in pokemons | orderBy: 'id' | limitTo: quantity"
       pokemon-data-from-server-getter
