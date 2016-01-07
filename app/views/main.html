@@ -4,9 +4,12 @@
   <h1>POKÉDEX</h1>
 
   <ul class="pokemon-list">
-    <li ng-repeat="pokemon in pokemons | orderBy: 'id' | limitTo: quantity">
-      {{pokemon.id}}-{{pokemon.resource_uri}}
-      <p>{{pokemon.name}}</p>
+    <li 
+      ng-repeat="pokemon in pokemons | orderBy: 'id' | limitTo: quantity"
+      pokemon-data-from-server-getter
+    >
+      <p>#{{pokemon.id}} {{pokemon.name}}</p>
+      <pre>{{pokemon |json}}</pre>
     </li>
   </ul>
 
@@ -16,6 +19,6 @@
     </div>
   </div>
 
-  <pre>{{pokemons |json}}</pre>
+<!--   <pre>{{pokemons |json}}</pre> -->
 
 </div>
