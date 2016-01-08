@@ -17,7 +17,7 @@
         <p>#{{pokemon.id}} <b>{{pokemon.name}}</b></p>
         <div class="img-cnt">
           <img 
-            ng-src="../dist/images/{{pokemon.id}}.png" 
+            ng-src="images/{{pokemon.id}}.png" 
             onerror='this.style.display = "none"' 
           />
         </div>
@@ -42,7 +42,7 @@
     </li>
   </ul>
 
-  <div class="row" style="margin: 60px 0;">
+  <div ng-show="blockInfiniteScroll" class="row" style="margin: 60px 0;">
     <div class="col-sm-2 col-sm-offset-5">
       <div class="button-2" ng-click="getMore()">LOAD MORE</div>
     </div>

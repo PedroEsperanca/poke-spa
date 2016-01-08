@@ -51,8 +51,8 @@ angular.module('pokedexApp')
    	this.getPokemon = function(id, cb){
 
 		var index = this.pokemons.map(function(pokemon){ 
-		   return pokemon.id;
-		}).indexOf(id);
+		   return JSON.stringify(pokemon.id);
+		}).indexOf(JSON.stringify(id));
 
 		// console.log(id + " - " + index);
 		// console.log(typeof this.pokemons[index].created);
@@ -78,6 +78,7 @@ angular.module('pokedexApp')
 			    this.pokemons[index].statistics.sp_def= response.data.sp_def;
 			    this.pokemons[index].statistics.speed= response.data.speed;
 			    this.pokemons[index].moves= response.data.moves;
+			    this.pokemons[index].created= response.data.created;
 
 			    var latestDescriptionUri =
 			    	response.data.descriptions[

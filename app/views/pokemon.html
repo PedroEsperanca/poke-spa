@@ -9,75 +9,156 @@
 	</a>
 </div>
 
-<h1 class="text-center">
+<h1 class="text-center pokemon-page-name">
 	{{currentPokemon.name}}
 </h1>
 
-<div class="row pokemon-info">
-	<div class="col-sm-6">
-		<div class="row">
-		    <div 
-		      class="pokemon-preview" 
-		    >
-		        <div class="img-cnt">
-		          <img 
-		            ng-src="images/{{currentPokemon.id}}.png" 
-		            onerror='this.style.display = "none"' 
-		          />
-		        </div>
-		        <div class="types-cnt">
-		          <div 
-		            ng-show="currentPokemon.types[0]" 
-		            class="type" 
-		            ng-class="currentPokemon.types[0].name"
-		          >
-		            {{currentPokemon.types[0].name}}
-		          </div>
-		          <div 
-		            ng-show="currentPokemon.types[1]"
-		            class="type" 
-		            ng-class="currentPokemon.types[1].name"
-		          >
-		            {{currentPokemon.types[1].name}}
-		          </div>
-		        </div>
-		    </div>
-		</div>
-		<div class="row">
+<div class="pokemon-info">
+	<div class="left-col">
+	    <div 
+	      class="pokemon-main" 
+	    >
+	        <div class="img-cnt">
+	          <img 
+	            ng-src="images/{{currentPokemon.id}}.png" 
+	            onerror='this.style.display = "none"' 
+	          />
+	        </div>
+	        <div class="types-cnt">
+	          <div 
+	            ng-show="currentPokemon.types[0]" 
+	            class="type" 
+	            ng-class="currentPokemon.types[0].name"
+	          >
+	            {{currentPokemon.types[0].name}}
+	          </div>
+	          <div 
+	            ng-show="currentPokemon.types[1]"
+	            class="type" 
+	            ng-class="currentPokemon.types[1].name"
+	          >
+	            {{currentPokemon.types[1].name}}
+	          </div>
+	        </div>
+	    </div>
+
+		<div class="pokemon-description">
 			{{currentPokemon.description}}
 		</div>
 	</div>
-	<div class="col-sm-6">
-		<div class="row pokemon-specs">
+	<div class="right-col">
+		<div class="pokemon-specs">
 			<div class="spec">
 				<div class="spec-title">Height</div>
 				<div class="spec-data">{{currentPokemon.height/10}} m</div>
 			</div>
 			<div class="spec">
 				<div class="spec-title">Category</div>
-				<div class="spec-data">{{currentPokemon.category}}</div>
+				<div class="spec-data">?</div>
 			</div>
 			<div class="spec">
 				<div class="spec-title">Weight</div>
-				<div class="spec-data">{{currentPokemon.weight}} kg</div>
+				<div class="spec-data">{{currentPokemon.weight/10}} kg</div>
 			</div>
 			<div class="spec">
 				<div class="spec-title">Abilities</div>
-				<div class="spec-data">{{currentPokemon.abilities}}</div>
+				<div class="spec-data">{{currentPokemon.abilities[0].name}}</div>
 			</div>
 			<div class="spec">
 				<div class="spec-title">Gender (M/F)</div>
 				<div class="spec-data">{{currentPokemon.male_female_ratio}}</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="pokemon-stats">
+			<h2>Base Stats</h2>
+
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.hp 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					HP
+				</div>
+			</div>
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.attack 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					Attack
+				</div>
+			</div>
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.defense 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					Defense
+				</div>
+			</div>
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.sp_atk 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					Special Attack
+				</div>
+			</div>
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.sp_def 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					Special Defense
+				</div>
+			</div>
+			<div class="stat-col-cntn">
+				<div class="stat-col">
+					<div 
+						class="stat-col-fill" 
+						ng-style="{
+							'height': currentPokemon.statistics.speed 
+						}"
+					></div>
+				</div>
+				<div class="stat-name">
+					Speed
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 </div>
 
-<div class="row">
+<div class="moves-cntn">
 
-	<h1>Moves</h1>
+	<h2>Moves</h2>
 
 	<ul class="moves-list">
 		<li ng-repeat="move in currentPokemon.moves">
@@ -87,5 +168,13 @@
 
 </div>
 
-<pre>{{currentPokemon|json}}</pre>
+<div class="row" style="margin: 60px 0;">
+	<div class="col-sm-4 col-sm-offset-4 text-center">
+		<a 
+			class="button-1" 
+			ng-click="getMore()"
+			href="/#/"
+		>EXPLORE MORE POKEMON</a>
+	</div>
+</div>
 
