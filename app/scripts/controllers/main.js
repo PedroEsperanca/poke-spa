@@ -19,6 +19,6 @@ angular.module('pokedexApp')
     $scope.getMore = function(){
     	$scope.quantity = $scope.quantity +12;
     	$scope.blockInfiniteScroll = false;
-    }
+    };
 
   });

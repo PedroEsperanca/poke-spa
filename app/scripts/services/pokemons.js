@@ -40,12 +40,12 @@ angular.module('pokedexApp')
 				    	this.pokemons.push(pokemon);
 			    	}
 			    }.bind(this));
-			   	cb(null,this.pokemons)
+			   	cb(null,this.pokemons);
 			  }.bind(this), function errorCallback(response) {
 			  	cb(response,false);
 			  });
   		}
-   	}
+   	};
 
    	
    	this.getPokemon = function(id, cb){
@@ -57,7 +57,7 @@ angular.module('pokedexApp')
 		// console.log(id + " - " + index);
 		// console.log(typeof this.pokemons[index].created);
 		if(typeof this.pokemons[index].created !== 'undefined'){
-			cb(null,this.pokemons[index])
+			cb(null,this.pokemons[index]);
 		} else {
 			$http({
 			  method: 'GET',
@@ -90,14 +90,14 @@ angular.module('pokedexApp')
 					this.pokemons[index].description = response.data.description;
 				}.bind(this));
 
-			   	cb(null,this.pokemons[index])
+			   	cb(null,this.pokemons[index]);
 			  }.bind(this), function errorCallback(response) {
 			  	cb(response,false);
 			  });
 
 		}
 
-   	}
+   	};
 
 
 

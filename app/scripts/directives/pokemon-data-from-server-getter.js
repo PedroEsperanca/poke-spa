@@ -9,10 +9,10 @@
 angular.module('pokedexApp')
   .directive('pokemonDataFromServerGetter', function (pokemons) {
     return {
-      link: function postLink($scope, $element, $attrs) {
+      link: function postLink($scope) {
         pokemons.getPokemon($scope.pokemon.id, function(err, pokemon){
         	$scope.pokemon = pokemon;
-        })
+        });
       }
     };
   });

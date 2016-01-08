@@ -9,8 +9,8 @@
  */
 angular.module('pokedexApp')
   .controller('PokemonCtrl', function ($scope, $routeParams, pokemons) {
-  	console.log($routeParams.pokemonId)
-  	console.log($routeParams.pokemonName)
+  	// console.log($routeParams.pokemonId);
+  	// console.log($routeParams.pokemonName);
 
   	pokemons.getPokemons(function(){
 
@@ -31,7 +31,7 @@ angular.module('pokedexApp')
 	    	$scope.nextPokemon = pokemon;
 	    });
 
-  	})
+  	});
 
 	//utils
 	function parsePokemonIn (id){	
