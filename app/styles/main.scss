@@ -5,7 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-UltraLight') format('opentype');
+    src: url('fonts/Montserrat-UltraLight') format('opentype');
     font-weight: 100;
     font-style: normal;
 }
@@ -17,13 +17,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 @font-face {
     font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Bold') format('truetype');
+    src: url('fonts/Montserrat-Bold') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: 'DINAlternateMedium';
-    src: url('../fonts/DIN-Alternate-Medium') format('opentype');
+    src: url('fonts/DIN-Alternate-Medium') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
@@ -38,6 +38,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding: 0;
   font-family: Montserrat;
+  background-image: url("../images/Background_2.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1 {
@@ -142,13 +146,89 @@ h4 {
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 1024px;
+
+.container {
+  &.main{
+    background: #fff;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  max-width: 1024px;
+  .title{
+    padding: 54px 32px;
+    margin: 0;
+  }
+}
+
+
+
+.pokemon-list{
+  list-style-type: none;
+  padding: 0px 25px 0px 20px;
+  overflow: auto;
+  margin: 0;
+  .pokemon-preview{
+    width: 216px;
+    height: 238px;
+    border-radius: 6px;
+    background: #F2F1F1;
+    margin-left: 13px;
+    display: inline-block;
+    float: left;
+    margin-bottom: 60px;
+    overflow: auto;
+    p{
+      width: 100%;
+      margin: 0;
+      float: left;
+    }
+    .img-cnt{
+      height: 194px;
+      position: relative;
+      float: left;
+      width: 100%;
+      img{
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+    .types-cnt{
+      width: 100%;
+      .type{
+        width: 50%;
+        float: left;
+        text-align: center;
+        padding: 2px;
+        text-transform: uppercase;
+        &:first-child { 
+          border-radius: 0 6px;
+        }
+        &:last-child { 
+          border-radius: 6px 0;
+        }
+        &.grass{
+          background: #A0DA5E;
+        }
+        &.poison{
+          background: #BE93E7;
+        }
+        &.fire{
+          background: #E85B0E;
+        }
+        &.water{
+          background: #4A90E2;
+        }
+        &.flying{
+          background: #D8D8D8;
+        }
+        &.bug{
+          background: #A0DA5E;
+        }
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 
 
 <div class="row">
-  <h1>POKÉDEX</h1>
+  <h1 class="title">POKÉDEX</h1>
 
   <ul 
     class="pokemon-list" 
@@ -9,17 +9,37 @@
     infinite-scroll-disabled="blockInfiniteScroll"
   >
     <li 
+      class="pokemon-preview" 
       ng-repeat="pokemon in pokemons | orderBy: 'id' | limitTo: quantity"
       pokemon-data-from-server-getter
     >
-      <p>#{{pokemon.id}} {{pokemon.name}}</p>
-      <pre>{{pokemon |json}}</pre>
+      <p>#{{pokemon.id}} <b>{{pokemon.name}}</b></p>
+      <div class="img-cnt">
+        <img ng-src="../images/{{pokemon.id}}.png" />
+      </div>
+      <div class="types-cnt">
+        <div 
+          ng-show="pokemon.types[0]" 
+          class="type" 
+          ng-class="pokemon.types[0].name"
+        >
+          {{pokemon.types[0].name}}
+        </div>
+        <div 
+          ng-show="pokemon.types[1]"
+          class="type" 
+          ng-class="pokemon.types[1].name"
+        >
+          {{pokemon.types[1].name}}
+        </div>
+      </div>
+      <!-- <pre>{{pokemon |json}}</pre> -->
     </li>
   </ul>
 
-  <div class="row text-center">
-    <div class="col-sm-6">
-      <div class="button-1" ng-click="getMore()">LOAD MORE</div>
+  <div class="row" style="margin: 60px 0;">
+    <div class="col-sm-2 col-sm-offset-5">
+      <div class="button-2" ng-click="getMore()">LOAD MORE</div>
     </div>
   </div>
 

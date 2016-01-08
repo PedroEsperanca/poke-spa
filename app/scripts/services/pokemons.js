@@ -24,13 +24,21 @@ angular.module('pokedexApp')
 			    console.log('got all pokemons from server');
 			    response.data.pokemon.forEach(function(pokemon){
 					//get id
-					pokemon.id = parseInt(
+					var id = parseInt(
 						pokemon.resource_uri.substring(
 							15,
 							pokemon.resource_uri.length-1
 						)
 					);
-			    	this.pokemons.push(pokemon);
+					var string = "000"+JSON.stringify(id);
+					pokemon.id = string.slice(
+			    		JSON.stringify(id).length, 
+			    		string.length
+			    	);
+			    	if(JSON.stringify(id).length<4){ //removes wierd pokemons
+				    	console.log(id + " - " + pokemon.id)
+				    	this.pokemons.push(pokemon);
+			    	}
 			    }.bind(this));
 			   	cb(null,this.pokemons)
 			  }.bind(this), function errorCallback(response) {
@@ -57,7 +65,7 @@ angular.module('pokedexApp')
 			}).then(function successCallback(response) {
 			    console.log('got pokemon'+id+' from server');
 
-			    this.pokemons[index].types= response.data.types;
+			    this.pokemons[index].types= response.data.types.reverse();
 			    this.pokemons[index].weight= response.data.weight;
 			    this.pokemons[index].height= response.data.height;
 			    this.pokemons[index].description= 'soon';
