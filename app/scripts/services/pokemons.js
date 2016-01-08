@@ -36,7 +36,7 @@ angular.module('pokedexApp')
 			    		string.length
 			    	);
 			    	if(JSON.stringify(id).length<4){ //removes wierd pokemons
-				    	console.log(id + " - " + pokemon.id)
+				    	// console.log(id + " - " + pokemon.id)
 				    	this.pokemons.push(pokemon);
 			    	}
 			    }.bind(this));
@@ -54,8 +54,8 @@ angular.module('pokedexApp')
 		   return pokemon.id;
 		}).indexOf(id);
 
-		console.log(id + " - " + index);
-		console.log(typeof this.pokemons[index].created);
+		// console.log(id + " - " + index);
+		// console.log(typeof this.pokemons[index].created);
 		if(typeof this.pokemons[index].created !== 'undefined'){
 			cb(null,this.pokemons[index])
 		} else {
@@ -68,7 +68,7 @@ angular.module('pokedexApp')
 			    this.pokemons[index].types= response.data.types.reverse();
 			    this.pokemons[index].weight= response.data.weight;
 			    this.pokemons[index].height= response.data.height;
-			    this.pokemons[index].description= 'soon';
+			    this.pokemons[index].male_female_ratio= response.data.male_female_ratio;
 			    this.pokemons[index].abilities= response.data.abilities;
 			    this.pokemons[index].statistics= {};
 			    this.pokemons[index].statistics.hp= response.data.hp;
@@ -78,6 +78,17 @@ angular.module('pokedexApp')
 			    this.pokemons[index].statistics.sp_def= response.data.sp_def;
 			    this.pokemons[index].statistics.speed= response.data.speed;
 			    this.pokemons[index].moves= response.data.moves;
+
+			    var latestDescriptionUri =
+			    	response.data.descriptions[
+			    		response.data.descriptions.length-1
+			    	].resource_uri;
+				$http({
+				  method: 'GET',
+				  url: 'http://pokeapi.co/'+latestDescriptionUri,
+				}).then(function successCallback(response) {
+					this.pokemons[index].description = response.data.description;
+				}.bind(this));
 
 			   	cb(null,this.pokemons[index])
 			  }.bind(this), function errorCallback(response) {

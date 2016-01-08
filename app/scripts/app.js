@@ -30,7 +30,7 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/pokemon', {
+      .when('/pokemon/:pokemonId/:pokemonName', {
         templateUrl: 'views/pokemon.html',
         controller: 'PokemonCtrl',
         controllerAs: 'pokemon'

@@ -39,9 +39,9 @@ body {
   padding: 0;
   font-family: Montserrat;
   background-image: url("../images/Background_2.png");
-  background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  background-size: cover;
 }
 
 h1 {
@@ -229,6 +229,33 @@ h4 {
           background: #A0DA5E;
         }
       }
+    }
+  }
+}
+
+.top-pokemon-navigator{
+  a{
+    background: #606C78;
+    width: 49.8%;
+    padding: 30px;
+    float: left;
+    color: white;
+    text-decoration: initial !important;
+    .id{
+      font-weight: 100;
+    }
+    &:first-child { 
+      border-radius: 0px 0px 32px 0;
+      text-align: right;
+      background-image: url("../images/Icon_previous.png");
+      background-repeat: no-repeat;
+      background-position: 32px 32px;
+    }
+    &:last-child { 
+      border-radius: 0px 0 0px 32px;
+      background-image: url("../images/Icon_Next.png");
+      background-repeat: no-repeat;
+      background-position: 445px 32px;
     }
   }
 }

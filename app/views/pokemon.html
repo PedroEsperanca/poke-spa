@@ -1,1 +1,91 @@
-<p>This is the pokemon view.</p>
+<div class="row top-pokemon-navigator">
+	<a ng-show="previousPokemon" ng-href="#/pokemon/{{previousPokemon.id}}/{{previousPokemon.name}}">
+		<span class="id"># {{previousPokemon.id}}</span>
+		<b>{{previousPokemon.name}}</b>
+	</a>
+	<a class="pull-right" ng-href="#/pokemon/{{nextPokemon.id}}/{{nextPokemon.name}}">
+		<b>{{nextPokemon.name}}</b> 
+		<span class="id"># {{nextPokemon.id}}</span>
+	</a>
+</div>
+
+<h1 class="text-center">
+	{{currentPokemon.name}}
+</h1>
+
+<div class="row pokemon-info">
+	<div class="col-sm-6">
+		<div class="row">
+		    <div 
+		      class="pokemon-preview" 
+		    >
+		        <div class="img-cnt">
+		          <img 
+		            ng-src="../images/{{currentPokemon.id}}.png" 
+		            onerror='this.style.display = "none"' 
+		          />
+		        </div>
+		        <div class="types-cnt">
+		          <div 
+		            ng-show="currentPokemon.types[0]" 
+		            class="type" 
+		            ng-class="currentPokemon.types[0].name"
+		          >
+		            {{currentPokemon.types[0].name}}
+		          </div>
+		          <div 
+		            ng-show="currentPokemon.types[1]"
+		            class="type" 
+		            ng-class="currentPokemon.types[1].name"
+		          >
+		            {{currentPokemon.types[1].name}}
+		          </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			{{currentPokemon.description}}
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="row pokemon-specs">
+			<div class="spec">
+				<div class="spec-title">Height</div>
+				<div class="spec-data">{{currentPokemon.height/10}} m</div>
+			</div>
+			<div class="spec">
+				<div class="spec-title">Category</div>
+				<div class="spec-data">{{currentPokemon.category}}</div>
+			</div>
+			<div class="spec">
+				<div class="spec-title">Weight</div>
+				<div class="spec-data">{{currentPokemon.weight}} kg</div>
+			</div>
+			<div class="spec">
+				<div class="spec-title">Abilities</div>
+				<div class="spec-data">{{currentPokemon.abilities}}</div>
+			</div>
+			<div class="spec">
+				<div class="spec-title">Gender (M/F)</div>
+				<div class="spec-data">{{currentPokemon.male_female_ratio}}</div>
+			</div>
+		</div>
+		<div class="row">
+		</div>
+	</div>
+</div>
+
+<div class="row">
+
+	<h1>Moves</h1>
+
+	<ul class="moves-list">
+		<li ng-repeat="move in currentPokemon.moves">
+			{{move.name}}
+		</li>
+	</ul>
+
+</div>
+
+<pre>{{currentPokemon|json}}</pre>
+

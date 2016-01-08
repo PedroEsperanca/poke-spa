@@ -13,26 +13,31 @@
       ng-repeat="pokemon in pokemons | orderBy: 'id' | limitTo: quantity"
       pokemon-data-from-server-getter
     >
-      <p>#{{pokemon.id}} <b>{{pokemon.name}}</b></p>
-      <div class="img-cnt">
-        <img ng-src="../images/{{pokemon.id}}.png" />
-      </div>
-      <div class="types-cnt">
-        <div 
-          ng-show="pokemon.types[0]" 
-          class="type" 
-          ng-class="pokemon.types[0].name"
-        >
-          {{pokemon.types[0].name}}
+      <a ng-href="#/pokemon/{{pokemon.id}}/{{pokemon.name}}">
+        <p>#{{pokemon.id}} <b>{{pokemon.name}}</b></p>
+        <div class="img-cnt">
+          <img 
+            ng-src="../images/{{pokemon.id}}.png" 
+            onerror='this.style.display = "none"' 
+          />
         </div>
-        <div 
-          ng-show="pokemon.types[1]"
-          class="type" 
-          ng-class="pokemon.types[1].name"
-        >
-          {{pokemon.types[1].name}}
+        <div class="types-cnt">
+          <div 
+            ng-show="pokemon.types[0]" 
+            class="type" 
+            ng-class="pokemon.types[0].name"
+          >
+            {{pokemon.types[0].name}}
+          </div>
+          <div 
+            ng-show="pokemon.types[1]"
+            class="type" 
+            ng-class="pokemon.types[1].name"
+          >
+            {{pokemon.types[1].name}}
+          </div>
         </div>
-      </div>
+      </a>
       <!-- <pre>{{pokemon |json}}</pre> -->
     </li>
   </ul>
