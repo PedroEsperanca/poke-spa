@@ -4,7 +4,7 @@
 
 Live Demo
 --------
-http://pedroesperanca.github.io/PedroEsperanca_fe_001
+http://pedroesperanca.github.io/poke-spa
 
 
 Executables
